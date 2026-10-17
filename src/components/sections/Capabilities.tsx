@@ -11,7 +11,7 @@ export function Capabilities() {
           title="What I Work With"
           description="Skills organized around what they let me do, not arbitrary proficiency scores."
         />
-        <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {capabilities.map((cap, i) => (
             <CapabilityCard key={cap.id} capability={cap} index={i} />
           ))}

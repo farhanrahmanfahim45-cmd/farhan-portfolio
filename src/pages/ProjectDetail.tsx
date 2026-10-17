@@ -8,6 +8,8 @@ import {
   FileText,
   Download,
   Star,
+  KeyRound,
+  Info,
 } from "lucide-react";
 import { GithubIcon } from "../components/BrandIcons";
 import { getProjectBySlug, projects } from "../data/projects";
@@ -47,7 +49,7 @@ export function ProjectDetail() {
   if (project.links.live) {
     linkButtons.push({
       href: project.links.live,
-      label: "View Live",
+      label: "Open Live Project",
       icon: <ArrowUpRight size={16} />,
       variant: linkButtons.length === 0 ? "primary" : "outline",
     });
@@ -167,10 +169,68 @@ export function ProjectDetail() {
           )}
         </header>
 
+        {/* Prototype notice + demo logins */}
+        {(project.disclaimer || project.demoAccess) && (
+          <div className="container-page mt-10 max-w-3xl space-y-4">
+            {project.disclaimer && (
+              <div className="flex gap-3 rounded-2xl border border-purple-200 bg-purple-50 p-4 sm:p-5">
+                <Info size={18} className="mt-0.5 shrink-0 text-purple-600" />
+                <p className="text-sm leading-relaxed text-ink-soft">
+                  {project.disclaimer}
+                </p>
+              </div>
+            )}
+            {project.demoAccess && (
+              <div className="rounded-2xl border border-line bg-white p-5 sm:p-6 shadow-card">
+                <div className="flex items-center gap-2">
+                  <KeyRound size={18} className="text-purple-600" />
+                  <h2 className="font-display text-lg font-semibold text-ink">
+                    {project.demoAccess.heading}
+                  </h2>
+                </div>
+                <p className="mt-2 text-sm leading-relaxed text-body">
+                  {project.demoAccess.intro}
+                </p>
+                <div className="mt-4 overflow-x-auto rounded-xl border border-line">
+                  <table className="w-full text-left text-sm">
+                    <thead className="bg-surface-lilac text-xs uppercase tracking-wider text-body">
+                      <tr>
+                        <th className="px-4 py-2.5 font-semibold">Role</th>
+                        <th className="px-4 py-2.5 font-semibold">Sign in with</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {project.demoAccess.rows.map((row) => (
+                        <tr key={row.role} className="border-t border-line-soft">
+                          <td className="px-4 py-3 font-medium text-ink">{row.role}</td>
+                          <td className="px-4 py-3 font-mono text-[13px] text-ink-soft">
+                            {row.signIn}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+                <p className="mt-4 text-sm text-body">
+                  Password:{" "}
+                  <code className="rounded-md bg-purple-50 border border-purple-100 px-2 py-1 font-mono text-[13px] text-purple-700">
+                    {project.demoAccess.password}
+                  </code>
+                </p>
+                {project.demoAccess.note && (
+                  <p className="mt-3 text-xs italic text-body/60">
+                    {project.demoAccess.note}
+                  </p>
+                )}
+              </div>
+            )}
+          </div>
+        )}
+
         {/* Gallery */}
         <div className="container-page mt-14 sm:mt-16">
           <h2 className="font-display text-lg font-semibold text-ink mb-5">
-            Visual Results
+            {project.filterTags.includes("Web App") ? "Preview" : "Visual Results"}
           </h2>
           <div className="grid sm:grid-cols-2 gap-5">
             {project.gallery.map((img, i) => (

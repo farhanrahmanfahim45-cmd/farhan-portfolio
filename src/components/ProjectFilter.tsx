@@ -1,7 +1,7 @@
 import { cn } from "../lib/cn";
 import type { FilterTag } from "../data/projects";
 
-const FILTERS: (FilterTag | "All")[] = ["All", "SQL", "Python", "Power BI", "Excel"];
+const FILTERS: (FilterTag | "All")[] = ["All", "SQL", "Python", "Power BI", "Excel", "Web App"];
 
 interface ProjectFilterProps {
   active: FilterTag | "All";

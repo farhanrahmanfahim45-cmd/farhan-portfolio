@@ -14,7 +14,7 @@
 //      are hidden automatically, never shown as disabled/empty buttons.
 // ---------------------------------------------------------------------------
 
-export type FilterTag = "SQL" | "Python" | "Power BI" | "Excel";
+export type FilterTag = "SQL" | "Python" | "Power BI" | "Excel" | "Web App";
 
 export interface ProjectLinks {
   github?: string;
@@ -42,6 +42,15 @@ export interface CaseStudySection {
   note?: string; // small caveat / evidence note, rendered subtly
 }
 
+// Optional demo-login block, shown on the project page when present.
+export interface DemoAccess {
+  heading: string;
+  intro: string;
+  rows: { role: string; signIn: string }[];
+  password: string;
+  note?: string;
+}
+
 export interface Project {
   id: string;
   slug: string;
@@ -60,6 +69,9 @@ export interface Project {
   gallery: GalleryImage[];
   caseStudy: CaseStudySection[];
   links: ProjectLinks;
+  // Short banner shown above the case study, e.g. "Prototype - no real data".
+  disclaimer?: string;
+  demoAccess?: DemoAccess;
 }
 
 export const projects: Project[] = [
@@ -355,6 +367,193 @@ export const projects: Project[] = [
       },
     ],
     links: {},
+  },
+
+  // -------------------------------------------------------------------
+  // 04 — HABITO — LIVE WEB APPLICATION
+  // -------------------------------------------------------------------
+  {
+    id: "habito",
+    slug: "habito",
+    number: "04",
+    role: "Live Web Application",
+    depthLabel: "Product Case Study",
+    depthStars: 4,
+    title: "Habito — Space Discovery & Listing Platform for Bangladesh",
+    shortTitle: "Habito",
+    cardDescription:
+      "A bilingual web platform for discovering, listing and managing rentable and sellable spaces across Bangladesh — built from a real audit of how people search today.",
+    tools: ["React", "TypeScript", "Supabase", "Tailwind CSS"],
+    filterTags: ["Web App"],
+    featuredMetric: { value: "109", label: "Rental Posts Audited" },
+    metrics: [
+      { value: "109", label: "Rental Posts Audited" },
+      { value: "62", label: "Dhaka Facebook To-Let Groups" },
+      { value: "65", label: "Usability Survey Responses" },
+      { value: "2", label: "Languages (English / বাংলা)" },
+    ],
+    coverImage: "/projects/habito/habito-cover.webp",
+    gallery: [
+      {
+        src: "/projects/habito/habito-full.webp",
+        caption:
+          "Habito home page — search by Rent or Buy, space type, area and budget. Prototype with synthetic listings.",
+      },
+    ],
+    disclaimer:
+      "Prototype demo: listings are synthetic seed data and payments run through a clearly labelled sandbox.",
+    caseStudy: [
+      {
+        id: "overview",
+        heading: "Overview",
+        body: [
+          "Habito is a web platform for discovering, listing and managing available spaces across Bangladesh — rooms, sublets, shops, offices, godowns, parking, storage and land — in one searchable place instead of scattered social-media posts.",
+        ],
+      },
+      {
+        id: "problem",
+        heading: "The Problem",
+        body: [
+          "Space hunting in Bangladesh largely happens through Facebook to-let groups and word of mouth. Posts are unstructured, hard to compare, quickly buried and difficult to verify. Owners have no simple way to list, update and manage what they have available.",
+        ],
+      },
+      {
+        id: "research",
+        heading: "Evidence Base",
+        body: [
+          "The product was shaped by research rather than assumption: an audit of existing posts to see what information is typically missing, and a bilingual usability survey to test whether real people could complete renter and owner tasks.",
+        ],
+        bullets: [
+          "Audit of 109 rental posts across 62 Dhaka Facebook to-let groups",
+          "Bilingual usability survey with 65 responses, of which 36 completed a renter or owner task",
+        ],
+      },
+      {
+        id: "features",
+        heading: "What It Does",
+        bullets: [
+          "Search spaces by Rent or Buy, type (Living, Business, Storage, Parking, Land & rural), area and budget",
+          "Owners can list and manage their own spaces; renters can save spaces, message owners and track bookings",
+          "Map-based discovery using Leaflet and OpenStreetMap",
+          "Fully bilingual interface in English and বাংলা",
+          "Row-level security on the database so users can only change what belongs to them",
+        ],
+      },
+      {
+        id: "stack",
+        heading: "Tech Stack",
+        body: [
+          "React 18, TypeScript, Vite and Tailwind CSS v4 on the front end; Supabase (Postgres with row-level security) on the back end; Leaflet with OpenStreetMap for maps; deployed on Vercel.",
+        ],
+      },
+      {
+        id: "status",
+        heading: "Current Status & Limits",
+        body: [
+          "Habito is a working prototype, and its limits are stated openly rather than hidden.",
+        ],
+        bullets: [
+          "Demo listings are synthetic seed data, not real properties",
+          "Payments run through a clearly labelled sandbox — no real money moves",
+          "No NID / eKYC verification and no registered legal entity yet",
+        ],
+      },
+    ],
+    links: {
+      live: "https://habito-live.vercel.app/",
+    },
+  },
+
+  // -------------------------------------------------------------------
+  // 05 — IUB ALUMNI INFORMATION SYSTEM — PROTOTYPE DATABASE
+  // -------------------------------------------------------------------
+  {
+    id: "iub-alumni",
+    slug: "iub-alumni-database",
+    number: "05",
+    role: "Prototype Database System",
+    depthLabel: "Live Prototype",
+    depthStars: 3,
+    title: "Alumni Information System — Department of International Business, IUB",
+    shortTitle: "IUB Alumni Database",
+    cardDescription:
+      "A prototype alumni database for IUB's Department of International Business with admin, faculty and alumni sign-ins. Demo only — no real data.",
+    tools: ["Database Design", "Role-Based Access", "Web App"],
+    filterTags: ["Web App"],
+    featuredMetric: { value: "500", label: "Demo Alumni Records" },
+    metrics: [
+      { value: "500", label: "Demo Alumni Records" },
+      { value: "3", label: "User Roles" },
+      { value: "6", label: "Admin Sections" },
+    ],
+    coverImage: "/projects/iub-alumni/alumni-directory-cover.webp",
+    gallery: [
+      {
+        src: "/projects/iub-alumni/alumni-directory-full.webp",
+        caption:
+          "Administrator view — the alumni directory with 500 demo records, search and filters by degree, graduation year, employment status, major and country.",
+      },
+    ],
+    disclaimer:
+      "This is a prototype database. No data in it is real — every record, name and account is made up for demonstration.",
+    demoAccess: {
+      heading: "Try the demo",
+      intro:
+        "Sign in at the live prototype using any of the demo accounts below to see how each role experiences the system.",
+      rows: [
+        { role: "Administrator", signIn: "admin@iub.edu.bd" },
+        { role: "Faculty", signIn: "faculty@iub.edu.bd" },
+        { role: "Alumni", signIn: "2000001" },
+      ],
+      password: "IUBDemo2026!",
+      note: "All three accounts use the same password. These are demo credentials for a prototype with fictional data.",
+    },
+    caseStudy: [
+      {
+        id: "overview",
+        heading: "Overview",
+        body: [
+          "The Alumni Information System is a prototype built for the Department of International Business at Independent University, Bangladesh (IUB). It explores how a department could keep alumni records in one structured place and give each type of user the access that fits their role.",
+        ],
+      },
+      {
+        id: "prototype-notice",
+        heading: "Prototype Notice",
+        body: [
+          "This is a prototype database. All data in it is fictional — no real alumni, faculty or administrator information is stored or shown.",
+        ],
+      },
+      {
+        id: "admin-view",
+        heading: "Administrator Workspace",
+        body: [
+          "The administrator view is organised into six sections, shown below, with the directory as the home screen.",
+        ],
+        bullets: [
+          "Directory — searchable, filterable table of alumni with name, student ID, degree, major, graduation year, employer and employment status",
+          "Verification",
+          "Academic overview",
+          "Career landscape",
+          "Data quality",
+          "Accounts",
+        ],
+      },
+      {
+        id: "roles",
+        heading: "Role-Based Access",
+        body: [
+          "The system has three separate kinds of sign-in, so each type of user enters through their own account.",
+        ],
+        bullets: [
+          "Administrator — signs in with an administrator email",
+          "Faculty — signs in with a faculty email",
+          "Alumni — signs in with an alumni ID number",
+        ],
+      },
+    ],
+    links: {
+      live: "https://iubinbalumnidbs.netlify.app/",
+    },
   },
 ];
 

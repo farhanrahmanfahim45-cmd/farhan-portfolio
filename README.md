@@ -24,7 +24,7 @@ All editable content lives in `src/data/`:
 |---|---|
 | `site.ts` | Name, tagline, contact links, resume path, nav labels, approach steps |
 | `skills.ts` | "What I Work With" capability groups |
-| `projects.ts` | All 3 projects — metrics, gallery images, case-study sections, links |
+| `projects.ts` | All 5 projects — metrics, gallery images, case-study sections, links |
 | `experience.ts` | Experience timeline entries |
 | `achievements.ts` | Recognition cards + proof images |
 | `creative.ts` | Creative Work grid (currently placeholders — see below) |
@@ -33,6 +33,14 @@ All editable content lives in `src/data/`:
 1. Add optimized images (WebP recommended) to `public/projects/<slug>/`
 2. Add a new object to the `projects` array in `src/data/projects.ts`
 3. Any `links.*` field left unset is automatically hidden in the UI — no need to touch components.
+
+### Live-project cards (Habito, IUB Alumni Database)
+Projects with `links.live` set get a split card: clicking the preview image opens the live
+site in a new tab, clicking the text opens the details page. A project can also carry a
+`disclaimer` banner and a `demoAccess` block (demo logins) — both render on its details page.
+Replace the generated preview images in `public/projects/habito/` and
+`public/projects/iub-alumni/` with real screenshots (keep the same file names, or update
+`coverImage` / `gallery` in `projects.ts`).
 
 ### Creative Work section
 No exported creative/design assets (e.g. Canva graphics, event posters) were available

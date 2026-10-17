@@ -27,7 +27,7 @@ export function About() {
               </div>
               <p className="text-sm font-semibold text-ink">Management Information Systems</p>
               <p className="text-xs text-body mt-1">
-                BBA, Independent University, Bangladesh — Minor in International Business
+                BBA, Independent University, Bangladesh — Minor in International Business · CGPA 3.75 · Expected August 2027
               </p>
             </div>
             <div className="rounded-2xl border border-line bg-white p-5">

@@ -20,11 +20,13 @@ export const experience: ExperienceEntry[] = [
     organization: "Independent International Business Forum (IIBF)",
     location: "Dhaka, Bangladesh",
     roles: [
-      { role: "Treasurer", period: "Aug 2026 – Present" },
+      { role: "Vice President", period: "Sep 2026 – Present" },
       { role: "Executive, Media & Communications", period: "Jun 2025 – Jul 2026" },
     ],
     points: [
-      "Managed organizational finances after progressing from a communications-focused executive role.",
+      "Oversee organizational administration, strategic planning and cross-departmental coordination, working with university authorities and internal leadership.",
+      "Lead media and communications strategy, digital engagement and brand development, building on 1,500+ organic Facebook followers gained earlier.",
+      "Spearhead flagship initiatives and external representation — event operations, registration systems, participant databases and stakeholder communications for ELEVATRIX Season 1, Rise Above All 2026 and the Nestle Corporate Talk.",
       "Designed social media content, banners and event materials; recruited and trained the media team.",
     ],
   },
@@ -36,6 +38,9 @@ export const experience: ExperienceEntry[] = [
     points: [
       "Selected as campus brand ambassador from 1,300+ applicants for Dabur Bangladesh's flagship program.",
       "Generated on-campus consumer insights and coordinated activities with the brand team.",
+      "Supported recruitment programs on social media and club channels for Marketing, Sales and Production Engineering.",
+      "Joined field visits and generated sales insights in Dhaka under the Territory Sales Manager (Dhanmondi Zone).",
+      "Provided operational assistance in organizing the Skincare Co-Creation Circle.",
     ],
   },
   {
